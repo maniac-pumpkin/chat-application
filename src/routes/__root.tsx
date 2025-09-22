@@ -1,6 +1,6 @@
 import { createRootRoute, type ErrorComponentProps, Outlet } from "@tanstack/react-router"
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/others/theme-provider"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 
