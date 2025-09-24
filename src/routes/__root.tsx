@@ -37,7 +37,7 @@ function NotFoundComponent() {
           <AlertTitle>What you can do:</AlertTitle>
           <AlertDescription>
             Check the URL for any typos, go back to the home page, or use the search feature to find what you're looking
-            for
+            for.
           </AlertDescription>
         </Alert>
         <Button onClick={() => navigate({ to: "/" })}>Go back to home</Button>
