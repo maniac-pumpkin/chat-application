@@ -15,6 +15,8 @@ import { Route as baseLayoutRouteImport } from './routes/(base)/_layout'
 import { Route as authSigninRouteImport } from './routes/(auth)/signin'
 import { Route as baseLayoutIndexRouteImport } from './routes/(base)/_layout.index'
 import { Route as authSignupIndexRouteImport } from './routes/(auth)/signup.index'
+import { Route as baseLayoutGroupsRouteImport } from './routes/(base)/_layout.groups'
+import { Route as baseLayoutCallsRouteImport } from './routes/(base)/_layout.calls'
 import { Route as authSignupProfileRouteImport } from './routes/(auth)/signup.profile'
 
 const baseRouteImport = createFileRoute('/(base)')()
@@ -42,6 +44,16 @@ const authSignupIndexRoute = authSignupIndexRouteImport.update({
   path: '/signup/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const baseLayoutGroupsRoute = baseLayoutGroupsRouteImport.update({
+  id: '/groups',
+  path: '/groups',
+  getParentRoute: () => baseLayoutRoute,
+} as any)
+const baseLayoutCallsRoute = baseLayoutCallsRouteImport.update({
+  id: '/calls',
+  path: '/calls',
+  getParentRoute: () => baseLayoutRoute,
+} as any)
 const authSignupProfileRoute = authSignupProfileRouteImport.update({
   id: '/(auth)/signup/profile',
   path: '/signup/profile',
@@ -52,11 +64,15 @@ export interface FileRoutesByFullPath {
   '/signin': typeof authSigninRoute
   '/': typeof baseLayoutIndexRoute
   '/signup/profile': typeof authSignupProfileRoute
+  '/calls': typeof baseLayoutCallsRoute
+  '/groups': typeof baseLayoutGroupsRoute
   '/signup': typeof authSignupIndexRoute
 }
 export interface FileRoutesByTo {
   '/signin': typeof authSigninRoute
   '/signup/profile': typeof authSignupProfileRoute
+  '/calls': typeof baseLayoutCallsRoute
+  '/groups': typeof baseLayoutGroupsRoute
   '/signup': typeof authSignupIndexRoute
   '/': typeof baseLayoutIndexRoute
 }
@@ -66,20 +82,30 @@ export interface FileRoutesById {
   '/(base)': typeof baseRouteWithChildren
   '/(base)/_layout': typeof baseLayoutRouteWithChildren
   '/(auth)/signup/profile': typeof authSignupProfileRoute
+  '/(base)/_layout/calls': typeof baseLayoutCallsRoute
+  '/(base)/_layout/groups': typeof baseLayoutGroupsRoute
   '/(auth)/signup/': typeof authSignupIndexRoute
   '/(base)/_layout/': typeof baseLayoutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/signin' | '/' | '/signup/profile' | '/signup'
+  fullPaths:
+    | '/signin'
+    | '/'
+    | '/signup/profile'
+    | '/calls'
+    | '/groups'
+    | '/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/signin' | '/signup/profile' | '/signup' | '/'
+  to: '/signin' | '/signup/profile' | '/calls' | '/groups' | '/signup' | '/'
   id:
     | '__root__'
     | '/(auth)/signin'
     | '/(base)'
     | '/(base)/_layout'
     | '/(auth)/signup/profile'
+    | '/(base)/_layout/calls'
+    | '/(base)/_layout/groups'
     | '/(auth)/signup/'
     | '/(base)/_layout/'
   fileRoutesById: FileRoutesById
@@ -128,6 +154,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authSignupIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(base)/_layout/groups': {
+      id: '/(base)/_layout/groups'
+      path: '/groups'
+      fullPath: '/groups'
+      preLoaderRoute: typeof baseLayoutGroupsRouteImport
+      parentRoute: typeof baseLayoutRoute
+    }
+    '/(base)/_layout/calls': {
+      id: '/(base)/_layout/calls'
+      path: '/calls'
+      fullPath: '/calls'
+      preLoaderRoute: typeof baseLayoutCallsRouteImport
+      parentRoute: typeof baseLayoutRoute
+    }
     '/(auth)/signup/profile': {
       id: '/(auth)/signup/profile'
       path: '/signup/profile'
@@ -139,10 +179,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface baseLayoutRouteChildren {
+  baseLayoutCallsRoute: typeof baseLayoutCallsRoute
+  baseLayoutGroupsRoute: typeof baseLayoutGroupsRoute
   baseLayoutIndexRoute: typeof baseLayoutIndexRoute
 }
 
 const baseLayoutRouteChildren: baseLayoutRouteChildren = {
+  baseLayoutCallsRoute: baseLayoutCallsRoute,
+  baseLayoutGroupsRoute: baseLayoutGroupsRoute,
   baseLayoutIndexRoute: baseLayoutIndexRoute,
 }
 
