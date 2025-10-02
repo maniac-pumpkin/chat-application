@@ -1,5 +1,8 @@
 import { Separator } from "../ui/separator"
 import { AppSidebarLinkItem } from "./app-sidebar-item"
+import AppSidebarSearch from "./app-sidebar-search"
+import AppSidebarSignOut from "./app-sidebar-signout"
+import AppSidebarThemeToggle from "./app-sidebar-theme"
 
 function AppSidebar() {
   return (
@@ -8,18 +11,13 @@ function AppSidebar() {
       <AppSidebarLinkItem icon="Users" path="/groups" />
       <AppSidebarLinkItem icon="PhoneCall" path="/calls" />
       <Separator className="my-6" />
+      <AppSidebarSearch />
+      <AppSidebarThemeToggle />
 
-      {/* <li className="hover:bg-sidebar-accent flex size-16 cursor-pointer items-center justify-center rounded-sm transition-all">
-        <Search className="text-sidebar-foreground" />
-      </li>
-      <li className="hover:bg-sidebar-accent flex size-16 cursor-pointer items-center justify-center rounded-sm transition-all">
-        <Moon className="text-sidebar-foreground" />
-      </li>
-      <div className="mt-auto flex h-24 w-full flex-col items-center justify-center">
-        <li className="hover:bg-sidebar-accent flex size-16 cursor-pointer items-center justify-center rounded-sm transition-all">
-          <LogOut className="text-sidebar-foreground" />
-        </li>
-      </div>  */}
+      <div className="mt-auto flex w-full flex-col items-center justify-center pb-4">
+        <Separator className="mb-4" />
+        <AppSidebarSignOut />
+      </div>
     </ul>
   )
 }
