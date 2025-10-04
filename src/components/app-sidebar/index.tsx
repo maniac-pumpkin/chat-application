@@ -13,7 +13,6 @@ function AppSidebar() {
       <Separator className="my-6" />
       <AppSidebarSearch />
       <AppSidebarThemeToggle />
-
       <div className="mt-auto flex w-full flex-col items-center justify-center pb-4">
         <Separator className="mb-4" />
         <AppSidebarSignOut />
