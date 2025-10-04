@@ -16,7 +16,7 @@ export function AppSidebarItem({ icon, ...props }: ItemPropsType) {
 
   return (
     <li
-      className="hover:bg-sidebar-accent flex size-16 cursor-pointer items-center justify-center rounded-sm"
+      className="hover:bg-sidebar-accent border-border flex size-16 cursor-pointer items-center justify-center rounded-sm hover:border-1"
       {...props}
     >
       <IconComponent className="text-sidebar-foreground" />
@@ -33,8 +33,8 @@ export function AppSidebarLinkItem({ icon, path }: LinkItemPropsType) {
     <Link to={path}>
       <li
         className={cn(
-          "hover:bg-sidebar-accent flex size-16 cursor-pointer items-center justify-center rounded-sm",
-          path === currentPath.pathname && "bg-sidebar-accent",
+          "hover:bg-sidebar-accent border-border flex size-16 cursor-pointer items-center justify-center rounded-sm hover:border-1",
+          path === currentPath.pathname && "bg-sidebar-accent border-border border-1",
         )}
       >
         <IconComponent className="text-sidebar-foreground" />

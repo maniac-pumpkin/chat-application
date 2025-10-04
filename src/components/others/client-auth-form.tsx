@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router"
-import { LoaderCircle } from "lucide-react"
 import { type FormEvent, type PropsWithChildren, useState } from "react"
 
 import { Button } from "../ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Spinner } from "../ui/spinner"
 
 type PropsType = PropsWithChildren & {
   footer: { linkHref: string; linkText: string; text: string }
@@ -34,7 +34,7 @@ function ClientAuthForm({ children, footer, header, submitBtnText, submitFn }: P
           {children}
           <Button className="w-full" disabled={pending} type="submit">
             <span>{submitBtnText}</span>
-            {pending && <LoaderCircle className="animate-spin" />}
+            {pending && <Spinner />}
           </Button>
         </CardContent>
         <CardFooter className="text-sm font-normal">

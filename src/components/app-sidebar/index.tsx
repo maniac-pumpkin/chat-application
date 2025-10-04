@@ -6,7 +6,7 @@ import AppSidebarThemeToggle from "./app-sidebar-theme"
 
 function AppSidebar() {
   return (
-    <ul className="bg-sidebar flex h-full w-24 flex-col items-center gap-y-1 pt-6">
+    <ul className="bg-sidebar border-border flex h-full w-24 flex-col items-center gap-y-1 border-x-1 pt-6">
       <AppSidebarLinkItem icon="MessageCircle" path="/" />
       <AppSidebarLinkItem icon="Users" path="/groups" />
       <AppSidebarLinkItem icon="PhoneCall" path="/calls" />
