@@ -1,16 +1,18 @@
-import { Ellipsis, UserPen, Users, UserX } from "lucide-react"
+import { Ellipsis } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { Button } from "../ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "../ui/item"
+import ChatListPanelCreateGroup from "./chat-list-panel-create-group"
+import ChatListPanelDeleteAcc from "./chat-list-panel-delete-acc"
+import ChatListPanelEditProfile from "./chat-list-panel-edit-profile"
 
 function ChatListPanelHeader() {
   return (
@@ -26,38 +28,23 @@ function ChatListPanelHeader() {
         <ItemDescription>@EvilRabbit</ItemDescription>
       </ItemContent>
       <ItemActions>
-        <HeaderDropdownMenu />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="icon" variant="ghost">
+              <Ellipsis />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Profile options</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <ChatListPanelCreateGroup />
+            <DropdownMenuSeparator />
+            <ChatListPanelEditProfile />
+            <ChatListPanelDeleteAcc />
+          </DropdownMenuContent>
+        </DropdownMenu>
       </ItemActions>
     </Item>
-  )
-}
-
-function HeaderDropdownMenu() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button size="icon" variant="ghost">
-          <Ellipsis />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>Profile options</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem variant="default">
-          <Users />
-          <span>Create a group</span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem variant="default">
-          <UserPen />
-          <span>Edit profile</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem variant="destructive">
-          <UserX />
-          <span>Delete account</span>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   )
 }
 

@@ -1,9 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router"
+import { Users } from "lucide-react"
 
-export const Route = createFileRoute('/(base)/_layout/groups')({
+import CommonPlaceholder from "@/components/placeholders/common-placeholder"
+
+export const Route = createFileRoute("/(base)/_layout/groups")({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>Hello "/(base)/_layout/groups"!</div>
+  return (
+    <>
+      <CommonPlaceholder
+        description="Select a conversation to start group chatting."
+        icon={<Users />}
+        title="Welcome to group chat"
+      />
+    </>
+  )
 }
