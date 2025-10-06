@@ -10,8 +10,12 @@ export const Route = createFileRoute("/(base)/_layout")({
 function RouteComponent() {
   return (
     <div className="container flex h-full">
-      <AppSidebar />
-      <ChatListPanel />
+      <div className="hidden lg:block">
+        <AppSidebar />
+      </div>
+      <div className="hidden lg:block">
+        <ChatListPanel />
+      </div>
       <div className="flex grow items-center justify-center">
         <Outlet />
       </div>
