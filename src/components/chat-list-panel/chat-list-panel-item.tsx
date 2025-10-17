@@ -1,7 +1,13 @@
 import { Pin, Trash2, UserLock } from "lucide-react"
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "../ui/context-menu"
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+  ContextMenuSeparator,
+} from "../ui/context-menu"
 import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "../ui/item"
 
 function ChatListPanelItem() {
@@ -29,6 +35,7 @@ function ChatListPanelItem() {
           <Pin />
           <span>Pin</span>
         </ContextMenuItem>
+        <ContextMenuSeparator />
         <ContextMenuItem variant="destructive">
           <Trash2 />
           <span>Delete</span>
